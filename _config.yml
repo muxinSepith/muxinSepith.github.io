@@ -1,0 +1,57 @@
+# Basic
+title: 木心Sepith
+subtitle: Coder
+#welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">下载这个主题</a>
+description: 朝闻道，夕可死矣。
+#显示在底部的
+creator: <a href="http://www.baidu.com">@muxinSepith</a> 
+
+url: "http://www.bing.cn"
+
+permalink: /:year/:month/:title/
+
+# Format
+highlighter: rouge
+
+#背景磨砂效果
+# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
+cover_color: 
+
+#博客的按钮
+# The blog button should not be removed.
+blog_button:
+    title: muxinBlog
+    description: Visit blog
+
+#博客下的几个按钮
+# Navigation buttons in the front page.
+nav:
+    - {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
+    - {title: MyTest, description: 这是一个测试, url: 'http://www.baidu.com'}
+    # - {title: Another Button, description: A button, url: 'http://example.com'}
+
+#分页
+# Pagination
+gems: [jekyll-paginate]
+paginate: 10
+paginate_path: "page/:num/"
+
+#评论
+# Comment
+comment:
+    disqus: vno-jekyll
+    # duoshuo: 
+    
+#社交帐号
+# Social
+social:
+    weibo: onevcat
+    github: onevcat
+    twitter: onevcat
+    gplus: 107108267983477358170
+    mail: onev@onevcat.com
+
+# Google Analytics
+ga:
+    # id: your_ga_id
+    # host: your_host
