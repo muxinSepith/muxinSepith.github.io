@@ -2,7 +2,7 @@
 title: 木心Sepith
 subtitle: Coder
 #welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">下载这个主题</a>
-description: 朝闻道，夕可死矣。
+description: 朝闻道，夕死可矣。
 #显示在底部的
 creator: <a href="http://www.baidu.com">@muxinSepith</a> 
 
@@ -45,11 +45,11 @@ comment:
 #社交帐号
 # Social
 social:
-    weibo: onevcat
+    weibo: muxin7
     github: onevcat
     twitter: onevcat
     gplus: 107108267983477358170
-    mail: onev@onevcat.com
+    mail: 463056265@qq.com
 
 # Google Analytics
 ga:
