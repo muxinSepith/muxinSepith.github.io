@@ -1,0 +1,271 @@
+---
+layout: post
+title: Win10环境下Jekyll搭建个人博客 - muxin
+date: 2016-02-16 15:32:24.000000000 +09:00
+---
+
+
+
+
+大家好，这里是木心。这篇文章将为你带来手把手教你在win系统下搭建Jekyll的个人博客。
+
+
+
+网上关于在Windows平台上搭建Jekyll的教程少之又少，而且时间都很老了，跟着他们的教程做会出现各种问题。所以本文采用了对小白都适用的手把手教学，那就废话不多说，跟着我一起来搭建炫酷的个人博客吧！
+
+
+
+### 资源准备
+
+你可能需要安装这些环境
+
+> - python 2.7.13
+> - Ruby 2.3.3
+> - Ruby development  kit(开发者工具包)
+
+
+
+你可以在以下网站下到
+
+> - python.org
+> - rubyinstaller.org
+
+
+
+或者直接点击下面我给出的安装文件链接，贴心吧
+
+> - [Python 2.7.13  Windows x86-64 MSI installer](https://www.python.org/ftp/python/2.7.13/python-2.7.13.amd64.msi)
+>
+>
+> - [Ruby 2.3.3 (x64)](https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.3.3-x64.exe)
+> - [DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe](https://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe)
+
+
+
+安装的过程就一路Next就行，有几个需要注意的地方，
+
+一个就是在安装pthon的时候在这一步，把窗口下拉到最下面，然后点这个红叉，选择第一个`Will be installed on local hard drive`
+
+
+![2.png](http://upload-images.jianshu.io/upload_images/42761-e8b3fea4db3cdce7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+另外一个就是注意安装Ruby的时候在下面这个两个选项进行勾选
+
+![1.png](http://upload-images.jianshu.io/upload_images/42761-59917bd675d85c2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+其实这两个注意的地方都是为windows添加环境变量，给后面的命令行做准备
+
+
+
+##### 接下来测试是否安装成功
+
+1.  `win+R` 调出运行
+2.  然后输入 `cmd`,打开命令行窗口
+3.  输入 `python --version`
+4.  如果结果显示的是 `Python 2.7.13` 那么你就是正确的安装了python，否则回到前一步检查是否添加了相对路径
+5.  接着输入 `ruby --version`
+6.  一样的，结果如果显示 `ruby 2.3.3p222...` 你就正确的安装了ruby
+
+
+
+
+
+### Jekyll的安装
+
+接下来就到我们的主角Jekyll上场了，关于Jekyll，这是一个用Ruby语言写的模板引擎，但是你并不需要关心它是干什么用的。
+
+在有了前面的铺垫之后，我们终于要安装最重要的jekyll了
+
+#### 1.将下载源更改为淘宝镜像
+
+因为国外的访问很慢，所以改为淘宝镜像，你可以理解为是在国内备份的国外网站源
+
+```
+ $ gem sources --remove https://rubygems.org/
+ $ gem sources -a http://gems.ruby-china.org/
+```
+
+可以通过`gem sources`命令进行查看当前有哪些源，如果显示的是`http://gems.ruby-china.org` 那么就成功了
+
+如果在这一步你遇到了如下问题，这是关于https安全链接验证的问题，所以我这里采用了http的形式，你也可以下载证书并设置环境变量，具体请点击[这里](https://github.com/ruby-china/rubygems-mirror/wiki)
+
+![3.png](http://upload-images.jianshu.io/upload_images/42761-58bd11d1c32cdc63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
+#### 2.安装Jekyll
+
+```
+ $ gem install jekyll
+ # 安装特定版本 gem install jekyll -v '2.0.0.alpha.1'
+ # 安装最新预览版本 gem install jekyll --pre
+```
+
+这里我们直接输入第一条命令`gem install jekyll`就行了
+
+
+
+#### 3.建立DevKit与Ruby依赖
+
+接下来解压我们在刚开始下载的`DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe` 
+
+注意这里解压的路径最好新建一个文件夹，因为它解压出来会散成一堆，我建了一个叫`rubydevkit`的文件夹，并解压到这个文件夹里面
+
+接下来，我们需要进入cmd命令行，进入到这个目录中
+
+````
+ $ cd C:\Users\muxin\Desktop\WinBlog\rubydevkit
+````
+
+
+
+这个目录改成你自己放`rubydevkit`文件的目录，执行
+
+```
+ $ ruby dk.rb init
+ # 确认 config.yml 文件添加了 ruby 安装路径, 可手动添加
+ $ ruby dk.rb install
+```
+
+
+
+#### 4.测试Jekyll
+
+```
+ $ jekyll new myblog
+ $ cd myblog
+ $ jekyll server
+ # 浏览器进入 http:\\localhost:4000 查看
+```
+
+这个时候我们按上面的输入`jekyll new myblog`时会发现如下报错：
+
+![4.png](http://upload-images.jianshu.io/upload_images/42761-eae650e3c814273b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+上面说的是我们没有安装bundler,**bundler**是使用Ruby语言写的，通过跟踪和安装运行Ruby项目所需要的确切的gem和版本,为Ruby项目提供了完整的可运行环境。
+
+所以，我们需要输入以下命令安装bundler
+
+```
+$ gem install bundler
+```
+
+重新回到上一步,输入
+
+```
+ $ jekyll new myblog
+ $ cd myblog
+ $ jekyll server
+ # 浏览器进入 http:\\localhost:4000 查看
+```
+
+如果成功看到默认模板的网页，那么恭喜你，你已经成功安装了Jekyll
+
+
+
+### Github Windows的安装
+
+接下来我们进行**github desktop**的安装，这里用的是github的桌面客户端，因为主要是面向小白的吧。
+
+所以喜欢git命令行的童鞋就自行去网上搜索git命令行的教程
+
+
+
+#### 下载链接
+
+> [Github Desktop for Windows7 or later](https://github-windows.s3.amazonaws.com/GitHubSetup.exe)
+
+下载后直接安装，但是因为服务器在国外，下载速度可能比较慢，自行FQ，这里不赘述
+
+或者点击这里下载我的百度云备份TODO
+
+
+
+#### 打开github.exe
+
+对，就是那只紫色的猫，难道程序猿大牛都喜欢猫是因为经常上github吗，~~笑cry~~
+
+输入你的账号登陆，会看到这样一个界面
+
+![5.png](http://upload-images.jianshu.io/upload_images/42761-eff8497cb9fafc92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+上图简单的描述了Github Desktop 客户端的布局
+
+这个时候就得选一个你喜欢的模板，点击[这里](http://jekyllthemes.org/)
+
+这里以我博客的模板为例
+
+
+
+### Fork别人的博客模板
+
+打开[Vno模板的Github链接](https://github.com/onevcat/vno-jekyll)，这是[Vno模板作者的博客](https://onevcat.com/)
+
+![9.png](http://upload-images.jianshu.io/upload_images/42761-c860d0118b0554d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+点击右上角的Fork，这个模板就变成你的了
+
+等个五秒钟把这个仓库移动到你的仓库来
+
+
+
+#### GithubPages的一些设置
+
+![8.png](http://upload-images.jianshu.io/upload_images/42761-86eb86e9c324038c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![6.png](http://upload-images.jianshu.io/upload_images/42761-5548d77306b9eb37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![7.png](http://upload-images.jianshu.io/upload_images/42761-1368c923e1997d74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
+
+点击Settings按钮，设置仓库名称，第一个Repository name 就是
+
+这里的仓库名称必须为 `name.github.io` 
+
+其中name为你前面的Owner的名字，也就是你的昵称
+
+
+
+![11.png](http://upload-images.jianshu.io/upload_images/42761-db716f80b9df3c37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+接下来拖到下面的GithubPages选项卡
+
+将`Source`项的`None`改为第一个`master branch`
+
+
+
+#### GithubPages测试
+
+恭喜你，打开`name.github.io`域名进行访问你的个人博客吧
+
+比如我的GithubPages域名为：`muxinsepith.github.io`
+
+关于这个GithubPages，这里不过多介绍，你把它理解为一个免费服务器就行
+
+
+
+### 添加本地仓库
+
+
+
+
+
+
+
+------
+
+## 高阶教程
+
+#### 自定义域名
+
+
+
+
+
+
+
+------
+
+### 相关网站
+
+Jekyll主题大全  http://jekyllthemes.org/
