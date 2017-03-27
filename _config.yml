@@ -1,10 +1,10 @@
 # Basic
 title: 木心Sepith
 subtitle: Coder
-#welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">下载这个主题</a>
+#welcome_message: <a href="https://zhangjunjia.com" target="_blank">欢迎来到世界的尽头</a>
 description: 朝闻道，夕死可矣。
 #显示在底部的
-creator: <a href="http://www.baidu.com">@muxinSepith</a> 
+creator: <a href="https://zhangjunjia.com">@muxinSepith</a> 
 
 url: "http://www.bing.cn"
 
@@ -20,14 +20,14 @@ cover_color:
 #博客的按钮
 # The blog button should not be removed.
 blog_button:
-    title: muxinBlog
-    description: Visit blog
+    title: MyBlog
+    description: 欢迎来到世界的尽头
 
 #博客下的几个按钮
 # Navigation buttons in the front page.
 nav:
-    - {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
-    - {title: MyTest, description: 这是一个测试, url: 'http://www.baidu.com'}
+    #- {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
+    #- {title: MyTest, description: 这是一个测试, url: 'http://www.baidu.com'}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 #分页
@@ -46,9 +46,9 @@ comment:
 # Social
 social:
     weibo: muxin7
-    github: onevcat
+    github: muxinSepith
     twitter: onevcat
-    gplus: 107108267983477358170
+    #gplus: 107108267983477358170
     mail: 463056265@qq.com
 
 # Google Analytics
