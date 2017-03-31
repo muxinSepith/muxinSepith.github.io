@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Win10环境下Jekyll搭建个人博客 - muxin
+title: Win10环境下Jekyll搭建个人博客
 date: 2017-03-27
 ---
 
@@ -246,7 +246,7 @@ $ gem install bundler
 
 ### 添加本地仓库
 
-
+//todo...
 
 
 
