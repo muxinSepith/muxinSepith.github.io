@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Win10环境下Jekyll搭建个人博客
+title: Unity预计算全局光照的学习(速度优化,LightProbe,LPPV)
 date: 2017-04-27
 categories: unity
 ---
